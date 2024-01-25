@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <Folder Include="confs\" />
-    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Configuration\Infrastructure.Configuration.csproj" />
   </ItemGroup>
 
 </Project>
