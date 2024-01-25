@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musicalog", "Musicalog\Musicalog.csproj", "{E868D5A5-F5D3-4800-91EB-C3B9D38C515D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F800E531-C4F8-4509-A8B4-735972DEA3A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{B51F0788-02A5-4479-BE36-C6EF2DFAA5AD}"
@@ -17,23 +15,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Data", "3 - Data", "{E8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{56A3BDF8-73FE-47A5-985A-A629B1090E9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationCLI", "PresentationCLI\PresentationCLI.csproj", "{7BD6E168-D436-44CC-BF60-D8A502D52319}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationCLI", "PresentationCLI\PresentationCLI.csproj", "{7BD6E168-D436-44CC-BF60-D8A502D52319}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Core", "Application.Core\Application.Core.csproj", "{B82C116C-F6FF-4DF2-91D2-5F895E78BD70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "Application.Core\Application.Core.csproj", "{B82C116C-F6FF-4DF2-91D2-5F895E78BD70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Core", "Domain.Core\Domain.Core.csproj", "{B61D634C-8F83-4D89-8733-4660097E4A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Core", "Domain.Core\Domain.Core.csproj", "{B61D634C-8F83-4D89-8733-4660097E4A2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.DTO", "Domain.DTO\Domain.DTO.csproj", "{D85FB171-75F3-41F4-8F8D-73375516207C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.DTO", "Domain.DTO\Domain.DTO.csproj", "{D85FB171-75F3-41F4-8F8D-73375516207C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Configuration", "Infrastructure.Configuration\Infrastructure.Configuration.csproj", "{00A6F102-8997-4692-85A3-393CED36DE75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Configuration", "Infrastructure.Configuration\Infrastructure.Configuration.csproj", "{00A6F102-8997-4692-85A3-393CED36DE75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Core", "Infrastructure.Core\Infrastructure.Core.csproj", "{BE394934-5DD5-4F58-B0F0-E24F56EE5AE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Core", "Infrastructure.Core\Infrastructure.Core.csproj", "{BE394934-5DD5-4F58-B0F0-E24F56EE5AE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.CrossCutting", "Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{184314AF-9061-4A84-BD72-3EF885192BA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{184314AF-9061-4A84-BD72-3EF885192BA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Extensions", "Infrastructure.Extensions\Infrastructure.Extensions.csproj", "{8CBDAFDF-AB7A-4D2E-94DE-C698D29BDFA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Extensions", "Infrastructure.Extensions\Infrastructure.Extensions.csproj", "{8CBDAFDF-AB7A-4D2E-94DE-C698D29BDFA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerRepository", "SQLServerRepository\SQLServerRepository.csproj", "{351540B8-8FFD-4034-BA5A-3D38C32022E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerRepository", "SQLServerRepository\SQLServerRepository.csproj", "{351540B8-8FFD-4034-BA5A-3D38C32022E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +39,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E868D5A5-F5D3-4800-91EB-C3B9D38C515D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E868D5A5-F5D3-4800-91EB-C3B9D38C515D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E868D5A5-F5D3-4800-91EB-C3B9D38C515D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E868D5A5-F5D3-4800-91EB-C3B9D38C515D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7BD6E168-D436-44CC-BF60-D8A502D52319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7BD6E168-D436-44CC-BF60-D8A502D52319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BD6E168-D436-44CC-BF60-D8A502D52319}.Release|Any CPU.ActiveCfg = Release|Any CPU
