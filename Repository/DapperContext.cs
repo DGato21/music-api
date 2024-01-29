@@ -1,5 +1,5 @@
-﻿using Infrastructure.Configuration;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Repository.Interfaces;
 using System.Data;
 
@@ -7,15 +7,12 @@ namespace Repository
 {
     public class DapperContext : IRepositoryContext
     {
-        private readonly Configuration _configuration;
+        private readonly IConfiguration _configuration;
         private readonly string _connectionString;
-        public DapperContext(Configuration configuration)
+        public DapperContext(IConfiguration configuration)
         {
             _configuration = configuration;
-            if (this._configuration.repository != null)
-                _connectionString = this._configuration.repository.GetConnectionString();
-            else
-                throw new Exception("Invalid configurations.");
+            _connectionString = this._configuration.GetConnectionString("SqlConnection");
         }
 
         // use for buffered queries that return a type
@@ -58,6 +55,7 @@ namespace Repository
             {
                 throw new Exception(String.Format("{0}.WithConnection() experienced a SQL exception (not a timeout)", GetType().FullName), ex);
             }
+            catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
         //use for non-buffered queries that return a type

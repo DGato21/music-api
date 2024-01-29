@@ -1,9 +1,7 @@
 ﻿using Application.Core.Interfaces;
-using Application.DTO;
-using Domain.Core;
 using Domain.Core.Interfaces;
-using Infrastructure.Configuration;
 using Infrastructure.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Core
@@ -11,12 +9,12 @@ namespace Application.Core
     public class AlbumApp : IAlbumApp
     {
         private readonly ILogger<AlbumApp> _logger;
-        private readonly Configuration _configuration;
+        private readonly IConfiguration _configuration;
         private readonly IAlbum _album;
 
         //USE CQRS???
 
-        public AlbumApp(ILogger<AlbumApp> logger, Configuration configuration, IAlbum album)
+        public AlbumApp(ILogger<AlbumApp> logger, IConfiguration configuration, IAlbum album)
         {
             this._logger = logger;
             this._configuration = configuration;
@@ -64,6 +62,8 @@ namespace Application.Core
         {
             try
             {
+                album.Id = Guid.NewGuid();
+
                 var mapper = MapperConfig.InitializeAutomapper();
                 var mappedAlbum = mapper.Map<Application.DTO.AlbumDTO, Domain.DTO.AlbumDTO>(album);
 

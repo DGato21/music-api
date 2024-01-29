@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Configuration
 {
-    public class Configuration
+    public class ConfigurationMapper
     {
         public RepositoryConfigurations repository { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Domain.DTO;
-using Infrastructure.Configuration;
+using Microsoft.Extensions.Configuration;
 using Repository.CommandQueries;
 using Repository.Interfaces;
 using static Dapper.SqlMapper;
@@ -11,7 +11,7 @@ namespace Repository
     {
         private readonly ICommandText _commandText;
 
-        public AlbumRepository(Configuration configuration, ICommandText commandText) : base(configuration)
+        public AlbumRepository(IConfiguration configuration, ICommandText commandText) : base(configuration)
         {
             this._commandText = commandText;
         }

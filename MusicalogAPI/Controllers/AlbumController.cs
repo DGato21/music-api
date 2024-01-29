@@ -1,6 +1,5 @@
 ﻿using Application.DTO;
 using Application.Core.Interfaces;
-using Infrastructure.Configuration;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MusicalogAPI.Controllers
@@ -11,18 +10,19 @@ namespace MusicalogAPI.Controllers
     {
         private readonly ILogger<AlbumController> _logger;
 
-        private readonly Configuration _configuration;
+        private readonly IConfiguration _configuration;
         private readonly IAlbumApp _albumApp;
 
-        public AlbumController(ILogger<AlbumController> logger, Configuration configuration, IAlbumApp albumApp)
+        public AlbumController(ILogger<AlbumController> logger, IConfiguration configuration, IAlbumApp albumApp)
         {
             this._logger = logger;
             this._configuration = configuration;
             this._albumApp = albumApp;
         }
 
-        [HttpGet(Name = "Get")]
-        public async Task<AlbumDTO> getAlbums(Guid id)
+        [HttpGet]
+        [Route("/getById/{id}")]
+        public async Task<AlbumDTO> getAlbumById(Guid id)
         {
             try
             {
@@ -35,8 +35,9 @@ namespace MusicalogAPI.Controllers
             }
         }
 
-        [HttpGet(Name = "List")]
-        public async Task<IEnumerable<AlbumDTO>> getAlbums(Dictionary<string, string> filters = null)
+        [HttpPost]
+        [Route("/getAlbums")]
+        public async Task<IEnumerable<AlbumDTO>> getAlbums([FromBody] Dictionary<string, string> filters = null)
         {
             try
             {
@@ -49,11 +50,14 @@ namespace MusicalogAPI.Controllers
             }
         }
 
-        [HttpPost(Name = "Create")]
-        public async Task createAlbum(AlbumDTO albumDTO)
+        [HttpPost]
+        [Route("/create")]
+        public async Task createAlbum([FromBody] AlbumDTO albumDTO)
         {
             try
             {
+                string teste = this._configuration.GetValue<string>("AllowedHosts");
+
                 await this._albumApp.createAlbum(albumDTO);
             }
             catch (Exception ex)
@@ -62,8 +66,9 @@ namespace MusicalogAPI.Controllers
             }
         }
 
-        [HttpPatch(Name = "Update")]
-        public async Task updateAlbum(Guid id, AlbumDTO albumDTO)
+        [HttpPatch]
+        [Route("/update/{id}")]
+        public async Task updateAlbum(Guid id, [FromBody] AlbumDTO albumDTO)
         {
             try
             {
@@ -75,7 +80,8 @@ namespace MusicalogAPI.Controllers
             }
         }
 
-        [HttpDelete(Name = "Delete")]
+        [HttpDelete]
+        [Route("/delete/{id}")]
         public async Task deleteAlbum(Guid id)
         {
             try
