@@ -15,11 +15,12 @@ CREATE TABLE DatabaseConfigurations
 COMMIT TRANSACTION T2;
 
 /****************/
+*/
 
 BEGIN TRANSACTION T3
 CREATE DATABASE Musicalog
 COMMIT TRANSACTION T3;
-*/
+
 
 /* Basic Database Structure */
 
