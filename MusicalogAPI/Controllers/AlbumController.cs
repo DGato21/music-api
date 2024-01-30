@@ -1,6 +1,7 @@
 ﻿using Application.DTO;
 using Application.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Azure;
 
 namespace MusicalogAPI.Controllers
 {
@@ -9,14 +10,11 @@ namespace MusicalogAPI.Controllers
     public class AlbumController: ControllerBase
     {
         private readonly ILogger<AlbumController> _logger;
-
-        private readonly IConfiguration _configuration;
         private readonly IAlbumApp _albumApp;
 
-        public AlbumController(ILogger<AlbumController> logger, IConfiguration configuration, IAlbumApp albumApp)
+        public AlbumController(ILogger<AlbumController> logger, IAlbumApp albumApp)
         {
             this._logger = logger;
-            this._configuration = configuration;
             this._albumApp = albumApp;
         }
 
@@ -31,7 +29,7 @@ namespace MusicalogAPI.Controllers
             catch (Exception ex)
             {
                 this._logger.LogError(ex.Message);
-                return null;
+                throw;
             }
         }
 
@@ -46,7 +44,7 @@ namespace MusicalogAPI.Controllers
             catch (Exception ex) 
             {
                 this._logger.LogError(ex.Message);
-                return new List<AlbumDTO>();
+                throw;
             }
         }
 
@@ -56,13 +54,12 @@ namespace MusicalogAPI.Controllers
         {
             try
             {
-                string teste = this._configuration.GetValue<string>("AllowedHosts");
-
                 await this._albumApp.createAlbum(albumDTO);
             }
             catch (Exception ex)
             {
                 this._logger.LogError(ex.Message);
+                throw;
             }
         }
 
@@ -77,6 +74,7 @@ namespace MusicalogAPI.Controllers
             catch (Exception ex)
             {
                 this._logger.LogError(ex.Message);
+                throw;
             }
         }
 
@@ -91,6 +89,7 @@ namespace MusicalogAPI.Controllers
             catch (Exception ex)
             {
                 this._logger.LogError(ex.Message);
+                throw;
             }
         }
     }

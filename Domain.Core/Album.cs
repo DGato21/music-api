@@ -1,5 +1,6 @@
 ﻿using Domain.Core.Interfaces;
 using Domain.DTO;
+using Repository;
 using Repository.Interfaces;
 
 namespace Domain.Core
@@ -28,6 +29,10 @@ namespace Domain.Core
         {
             try
             {
+                //Validate Filters: check if all filters provided are valid
+                if (!validateFilters(filter))
+                    throw new Exception("Domain.Core.getAlbums: Invalid filters provided.");
+
                 var result = this._repository.GetAll(filter);
 
                 return result;
@@ -50,6 +55,9 @@ namespace Domain.Core
         {
             try
             {
+                //Ensure ID is correct
+                album.Id = id;
+
                 var result = this._repository.Update(id, album);
 
                 return Task.CompletedTask;
@@ -66,6 +74,16 @@ namespace Domain.Core
                 return Task.CompletedTask;
             }
             catch (Exception ex) { throw ex; }
+        }
+
+        private bool validateFilters(IDictionary<string, string> filters)
+        {
+            if (filters != null && filters.Count > 0)
+            {
+                return filters.Keys.All(key => this._repository.ValidFilters().Contains(key, StringComparer.InvariantCultureIgnoreCase));
+            }
+            else
+                return true;
         }
     }
 }

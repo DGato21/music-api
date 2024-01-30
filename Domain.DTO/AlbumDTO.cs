@@ -1,6 +1,4 @@
-﻿using Domain.DTO.Enum;
-
-namespace Domain.DTO
+﻿namespace Domain.DTO
 {
     public class AlbumDTO
     {
@@ -10,6 +8,18 @@ namespace Domain.DTO
         public string ArtistName { get; set; }
         public int Stock { get; set;}
         public byte[] Cover { get; set;}
-        public AlbumType Type { get; set; }
+
+        private string type;
+        public string Type
+        {
+            get { return this.type; }
+            set
+            {
+                if (availableTypes.Contains(value)) { this.type = value; }
+                else { throw new Exception("Application.DTO.AlbumDTO.Type: Invalid type property value."); }
+            }
+        }
+
+        private readonly List<string> availableTypes = new List<string>() { "Vinyl", "CD" };
     }
 }

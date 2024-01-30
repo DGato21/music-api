@@ -9,5 +9,7 @@ namespace Repository.Interfaces
         Task Add(AlbumDTO albumDTO);
         Task Update(Guid id, AlbumDTO albumDTO);
         Task Delete(Guid id);
+
+        IEnumerable<string> ValidFilters();
     }
 }

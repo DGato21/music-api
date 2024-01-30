@@ -9,15 +9,11 @@ namespace Application.Core
     public class AlbumApp : IAlbumApp
     {
         private readonly ILogger<AlbumApp> _logger;
-        private readonly IConfiguration _configuration;
         private readonly IAlbum _album;
 
-        //USE CQRS???
-
-        public AlbumApp(ILogger<AlbumApp> logger, IConfiguration configuration, IAlbum album)
+        public AlbumApp(ILogger<AlbumApp> logger, IAlbum album)
         {
             this._logger = logger;
-            this._configuration = configuration;
             this._album = album;
         }
 

@@ -1,0 +1,575 @@
+{
+	"info": {
+		"_postman_id": "978115e7-af44-4bf4-af82-1191d2167e09",
+		"name": "Musicalog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10774486"
+	},
+	"item": [
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/getById/de23e91b-67d5-4d7b-ae08-5d776e2cc6a1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"getById",
+						"de23e91b-67d5-4d7b-ae08-5d776e2cc6a1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/getById/de23e91b-67d5-4d7b-ae08-5d776e2cc6a1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"getById",
+								"de23e91b-67d5-4d7b-ae08-5d776e2cc6a1"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "GetAlbums",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/getAlbums",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"getAlbums"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetAlbums (All)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/getAlbums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"getAlbums"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetAlbums Artist Filter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"artistName\": \"Artist XPTO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/getAlbums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"getAlbums"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetAlbums Album Filter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Album XPTO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/getAlbums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"getAlbums"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetAlbums Artist and Album Filter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Album XPTO\",\r\n  \"artistName\": \"Artist V2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/getAlbums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"getAlbums"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetAlbums Type Filter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"CD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/getAlbums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"getAlbums"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetAlbums Invalid Filter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cover\": \"Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/getAlbums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"getAlbums"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Album XPTO\",\r\n  \"artistName\": \"Artist XPTO\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"CD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:80/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Album1 CD",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Album XPTO\",\r\n  \"artistName\": \"Artist XPTO\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"CD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Album1 Vinyl",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Vinyl XPTO\",\r\n  \"artistName\": \"Artist XPTO\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Album 3 CD",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Album XPTO\",\r\n  \"artistName\": \"Artist V2\",\r\n  \"stock\": 7,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"CD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Example of Album To Delete",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"TO DELETE\",\r\n  \"artistName\": \"TO DELETE\",\r\n  \"stock\": 7,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"CD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Vinyl XPTO\",\r\n  \"artistName\": \"Artist XPTO Classic\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:80/update/de23e91b-67d5-4d7b-ae08-5d776e2cc6a1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"update",
+						"de23e91b-67d5-4d7b-ae08-5d776e2cc6a1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Artist Name",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Vinyl XPTO\",\r\n  \"artistName\": \"Artist XPTO Classic\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/update/de23e91b-67d5-4d7b-ae08-5d776e2cc6a1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"update",
+								"de23e91b-67d5-4d7b-ae08-5d776e2cc6a1"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Update Album Title",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Vinyl XPTO Classic\",\r\n  \"artistName\": \"Artist XPTO Classic\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/update/1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"update",
+								"1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Update Album Title & Artist",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Vinyl XPTO Classic V2\",\r\n  \"artistName\": \"Artist XPTO Classic V2\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/update/de23e91b-67d5-4d7b-ae08-5d776e2cc6a1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"update",
+								"de23e91b-67d5-4d7b-ae08-5d776e2cc6a1"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:80/delete/b2f92e7a-5f0f-47e5-be00-f19046e786a3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"delete",
+						"b2f92e7a-5f0f-47e5-be00-f19046e786a3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/delete/1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"delete",
+								"1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

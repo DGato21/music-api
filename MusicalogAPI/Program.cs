@@ -3,7 +3,6 @@ using Application.Core;
 using Application.Core.Interfaces;
 using Domain.Core;
 using Domain.Core.Interfaces;
-using Infrastructure.Core;
 using Repository;
 using Repository.CommandQueries;
 using Repository.Interfaces;
@@ -41,7 +40,7 @@ namespace MusicalogAPI
             app.Run();
         }
 
-        public static void SetServices(ref WebApplicationBuilder builder)
+        private static void SetServices(ref WebApplicationBuilder builder)
         {
             //Data.Repository Services
             builder.Services.AddTransient<ICommandText, CommandText>();

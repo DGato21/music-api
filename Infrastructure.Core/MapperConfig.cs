@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Domain.DTO.Enum;
 
 namespace Infrastructure.Core
 {
@@ -10,11 +9,13 @@ namespace Infrastructure.Core
             //Provide all the Mapping Configuration
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Application.DTO.AlbumDTO, Domain.DTO.AlbumDTO>()
-                   .ForMember(d => d.Type, op => op.MapFrom(o => o.Type));
+                cfg.CreateMap<Application.DTO.AlbumDTO, Domain.DTO.AlbumDTO>();
+
+                cfg.CreateMap<Domain.DTO.AlbumDTO, Application.DTO.AlbumDTO>();
             });
             //Create an Instance of Mapper and return that Instance
             var mapper = new Mapper(config);
+
             return mapper;
         }
     }

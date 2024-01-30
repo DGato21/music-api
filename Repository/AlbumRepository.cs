@@ -11,6 +11,9 @@ namespace Repository
     {
         private readonly ICommandText _commandText;
 
+        private readonly HashSet<string> VALID_FILTERS = new HashSet<string>() 
+        { "Id", "Title", "ArtistName", "Type", "Stock" };
+
         public AlbumRepository(IConfiguration configuration, ICommandText commandText) : base(configuration)
         {
             this._commandText = commandText;
@@ -18,9 +21,29 @@ namespace Repository
 
         public async Task<IEnumerable<AlbumDTO>> GetAll(IDictionary<string, string> filter)
         {
+            var builder = new SqlBuilder();
+            var parameter = new DynamicParameters();
+            SqlBuilder.Template? select = null;
+            if (filter != null && filter.Count > 0)
+            {
+                parameter = new DynamicParameters(filter);
+
+                foreach (var f in filter)
+                {
+                    builder = builder.Where($"{f.Key} = @{f.Key}");
+                    parameter.Add(f.Key, f.Value);
+                }
+
+                select = builder.AddTemplate(this._commandText.GetAlbums + " /**where**/");
+            }
+            else
+            {
+                select = builder.AddTemplate(this._commandText.GetAlbums);
+            }
+
             return await WithConnection(async conn =>
             {
-                var query = await conn.QueryAsync<AlbumDTO>(_commandText.GetAlbums, filter);
+                var query = await conn.QueryAsync<AlbumDTO>(select.RawSql, parameter);
                 return query;
             });
         }
@@ -44,7 +67,7 @@ namespace Repository
                     Id = albumDTO.Id,
                     Title = albumDTO.Title,
                     ArtistName = albumDTO.ArtistName,
-                    TypeId = albumDTO.Type,
+                    Type = albumDTO.Type,
                     Stock = albumDTO.Stock,
                     Cover = albumDTO.Cover
                 });
@@ -58,10 +81,10 @@ namespace Repository
                     new {
                         Title = albumDTO.Title,
                         ArtistName = albumDTO.ArtistName,
-                        TypeId = albumDTO.Type,
+                        Type = albumDTO.Type,
                         Stock = albumDTO.Stock,
                         Cover = albumDTO.Cover,
-                        Id = albumDTO.Id,
+                        Id = id,
                     });
             });
         }
@@ -73,6 +96,11 @@ namespace Repository
                 await conn.ExecuteAsync(_commandText.RemoveAlbum, 
                     new { Id = id });
             });
+        }
+
+        public IEnumerable<string> ValidFilters()
+        {
+            return this.VALID_FILTERS;
         }
     }
 }

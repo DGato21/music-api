@@ -34,6 +34,7 @@ namespace Repository
             {
                 throw new Exception(String.Format("{0}.WithConnection() experienced a SQL exception (not a timeout)", GetType().FullName), ex);
             }
+            catch (Exception ex) { throw ex; }
         }
 
         // use for buffered queries that do not return a type
@@ -55,7 +56,7 @@ namespace Repository
             {
                 throw new Exception(String.Format("{0}.WithConnection() experienced a SQL exception (not a timeout)", GetType().FullName), ex);
             }
-            catch (Exception ex) { throw new Exception(ex.Message); }
+            catch (Exception ex) { throw ex; }
         }
 
         //use for non-buffered queries that return a type
@@ -78,6 +79,7 @@ namespace Repository
             {
                 throw new Exception(String.Format("{0}.WithConnection() experienced a SQL exception (not a timeout)", GetType().FullName), ex);
             }
+            catch (Exception ex) { throw ex; }
         }
     }
 }
