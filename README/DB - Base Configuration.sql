@@ -1,4 +1,5 @@
 /* Main Database that serves to save databases configurations*/
+/*
 BEGIN TRANSACTION T1
 CREATE DATABASE Musicalog_Main
 COMMIT TRANSACTION T1;
@@ -18,6 +19,7 @@ COMMIT TRANSACTION T2;
 BEGIN TRANSACTION T3
 CREATE DATABASE Musicalog
 COMMIT TRANSACTION T3;
+*/
 
 /* Basic Database Structure */
 

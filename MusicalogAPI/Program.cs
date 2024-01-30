@@ -1,11 +1,4 @@
-
-using Application.Core;
-using Application.Core.Interfaces;
-using Domain.Core;
-using Domain.Core.Interfaces;
-using Repository;
-using Repository.CommandQueries;
-using Repository.Interfaces;
+using Infrastructure.Services;
 
 namespace MusicalogAPI
 {
@@ -16,7 +9,7 @@ namespace MusicalogAPI
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            SetServices(ref builder);
+            ServiceStartup.SetServices(builder.Services);
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -38,20 +31,6 @@ namespace MusicalogAPI
             app.MapControllers();
 
             app.Run();
-        }
-
-        private static void SetServices(ref WebApplicationBuilder builder)
-        {
-            //Data.Repository Services
-            builder.Services.AddTransient<ICommandText, CommandText>();
-            builder.Services.AddSingleton<IRepositoryContext, DapperContext>();
-            builder.Services.AddTransient<IAlbumRepository, AlbumRepository>();
-
-            //Application.Core Services
-            builder.Services.AddScoped<IAlbumApp, AlbumApp>();
-
-            //Domain.Core Services
-            builder.Services.AddScoped<IAlbum, Album>();
         }
     }
 }

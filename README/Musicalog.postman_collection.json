@@ -406,6 +406,35 @@
 					"header": null,
 					"cookie": [],
 					"body": null
+				},
+				{
+					"name": "Example of Album Type Invalid",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"TO DELETE\",\r\n  \"artistName\": \"TO DELETE\",\r\n  \"stock\": 7,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
 				}
 			]
 		},
@@ -474,7 +503,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"title\": \"Vinyl XPTO Classic\",\r\n  \"artistName\": \"Artist XPTO Classic\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
+							"raw": "{\r\n  \"title\": \"Vinyl XPTO Classic V3\",\r\n  \"artistName\": \"Artist XPTO Classic\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -482,13 +511,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/update/1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51",
+							"raw": "{{URL}}/update/de23e91b-67d5-4d7b-ae08-5d776e2cc6a1",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"update",
-								"1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51"
+								"de23e91b-67d5-4d7b-ae08-5d776e2cc6a1"
 							]
 						}
 					},
@@ -504,7 +533,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"title\": \"Vinyl XPTO Classic V2\",\r\n  \"artistName\": \"Artist XPTO Classic V2\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
+							"raw": "{\r\n  \"title\": \"Vinyl XPTO Classic V3\",\r\n  \"artistName\": \"Artist XPTO Classic V3\",\r\n  \"stock\": 5,\r\n  \"cover\": \"01 02 03 04\",\r\n  \"type\": \"Vinyl\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -554,13 +583,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/delete/1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51",
+							"raw": "{{URL}}/delete/e8235521-b43d-4beb-b0b1-51289016a009",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"delete",
-								"1d3a42a5-2780-4c16-b71a-7c6d5c7a7a51"
+								"e8235521-b43d-4beb-b0b1-51289016a009"
 							]
 						}
 					},
