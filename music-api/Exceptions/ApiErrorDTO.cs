@@ -1,4 +1,4 @@
-﻿namespace MusicalogAPI.Exceptions
+﻿namespace music_api.Exceptions
 {
     public class ApiErrorDTO
     {

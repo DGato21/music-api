@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
+    <ProjectReference Include="..\Data.Gateway.SpotifyAPI\Data.Gateway.SpotifyAPI.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 

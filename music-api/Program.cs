@@ -1,6 +1,6 @@
 using Infrastructure.Services;
 
-namespace MusicalogAPI
+namespace music_api
 {
     public class Program
     {
