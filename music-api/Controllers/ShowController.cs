@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace music_api.Controllers
 {
-    [Route("music-api/show")]
+    [Route("music-api/v1/show")]
     [ApiController]
     public class ShowController : ControllerBase
     {
