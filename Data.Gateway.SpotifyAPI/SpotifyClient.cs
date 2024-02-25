@@ -3,6 +3,9 @@ using Data.Gateway.SpotifyAPI.DTO;
 using Data.Gateway.SpotifyAPI.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace Data.Gateway.SpotifyAPI
 {
@@ -24,15 +27,26 @@ namespace Data.Gateway.SpotifyAPI
 
         public async Task Authenticate(RequestAuthentication requestAuthentication)
         {
-            HttpContent content = null;
+            try
+            {
+                HttpContent content = null;
 
-            SetHttpClientToken();
+                var stringContent = new StringContent(JsonConvert.SerializeObject(requestAuthentication.getAuthBody), Encoding.UTF8, "application/x-www-form-urlencoded");
+                string requestUrl = SpotifyCommand.AuthenticationUrl(requestAuthentication.baseUrl);
+                var response = await this.httpClient.PostAsync(requestUrl, stringContent).ConfigureAwait(false);
 
-            var stringContent = new StringContent(JsonConvert.SerializeObject(requestAuthentication));
-            var response = await this.httpClient.PostAsync(SpotifyCommand.AuthenticationUrl, stringContent).ConfigureAwait(false);
+                //TODO
+                var responseStr = response.Content.ReadAsStringAsync().Result;
 
-            //TODO
-            var responseStr = response.Content.ReadAsStringAsync().Result;
+                var authenticationResponse = JsonConvert.DeserializeObject<AuthenticationResponse>(responseStr);
+
+                //Receive the Token and Set
+                SetHttpClientToken(authenticationResponse.token_type, authenticationResponse.access_token);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<AlbumInfoResponse> FetchAlbumInfo(RequestAlbumInfo requestAlbumInfo)
@@ -59,14 +73,14 @@ namespace Data.Gateway.SpotifyAPI
         public void SetToken(string token) => this.token = token;
         public void SetTokenType(string tokenType) => this.tokenType = tokenType;
 
-        private void SetHttpClientToken()
+        private void SetHttpClientToken(string tokenType, string token)
         {
-            this.httpClient.DefaultRequestHeaders.Add("Authorization", $"{this.tokenType} {token}");
+            this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(this.tokenType, token);
         }
 
         private void SetHttpClientDefaultHeaders()
         {
-            this.httpClient.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
+            this.httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
             this.httpClient.DefaultRequestHeaders.Add("User-Agent", "Other");
         }
     }

@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "music-api", "music-api\music-api.csproj", "{925EAA52-D3EA-4F2D-AAFE-DF5DBEA08A88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Gateway.SpotifyAPI", "Data.Gateway.SpotifyAPI\Data.Gateway.SpotifyAPI.csproj", "{5C12E62F-6173-47B7-A512-873C0BF25C08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Gateway.SpotifyAPI", "Data.Gateway.SpotifyAPI\Data.Gateway.SpotifyAPI.csproj", "{5C12E62F-6173-47B7-A512-873C0BF25C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Configuration", "Infrastructure.Configuration\Infrastructure.Configuration.csproj", "{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{5C12E62F-6173-47B7-A512-873C0BF25C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C12E62F-6173-47B7-A512-873C0BF25C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C12E62F-6173-47B7-A512-873C0BF25C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{BF9B89C3-7B1E-4AB8-85F3-F1F40DFA6E5B} = {56A3BDF8-73FE-47A5-985A-A629B1090E9D}
 		{925EAA52-D3EA-4F2D-AAFE-DF5DBEA08A88} = {B51F0788-02A5-4479-BE36-C6EF2DFAA5AD}
 		{5C12E62F-6173-47B7-A512-873C0BF25C08} = {E8D63C11-8228-4118-8AC8-0CCE9E2ED093}
+		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E} = {56A3BDF8-73FE-47A5-985A-A629B1090E9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {36CC9528-C05B-4BF8-B905-276727679EEF}

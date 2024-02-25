@@ -8,8 +8,10 @@ namespace music_api
         {
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+            //var configuration = BuildConfiguration();
+
             // Add services to the container.
-            ServiceStartup.SetServices(builder.Services);
+            ServiceStartup.RegisterServices(builder.Services, builder.Configuration);
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -31,6 +33,14 @@ namespace music_api
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static IConfiguration BuildConfiguration()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Path.Combine(AppContext.BaseDirectory, "confs"))
+                ;
+            return builder.Build();
         }
     }
 }

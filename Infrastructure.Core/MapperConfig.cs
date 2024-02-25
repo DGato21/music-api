@@ -9,9 +9,7 @@ namespace Infrastructure.Core
             //Provide all the Mapping Configuration
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Application.DTO.AlbumDTO, Domain.DTO.AlbumDTO>();
 
-                cfg.CreateMap<Domain.DTO.AlbumDTO, Application.DTO.AlbumDTO>();
             });
             //Create an Instance of Mapper and return that Instance
             var mapper = new Mapper(config);

@@ -1,6 +1,7 @@
 ﻿using Data.Gateway.SpotifyAPI.Interfaces;
 using Data.Gateway.SpotifyAPI.Mappers;
-using Microsoft.Extensions.Configuration;
+using Infrastructure.Configuration;
+using Infrastructure.Configuration.Factories;
 
 namespace Data.Gateway.SpotifyAPI
 {
@@ -8,16 +9,19 @@ namespace Data.Gateway.SpotifyAPI
     {
         private readonly ISpotifyClient spotifyClient;
 
-        public SpotifyService(SpotifyGateway spotifyGateway, ISpotifyClient spotifyClient)
+        public SpotifyService(ISpotifyClient spotifyClient, SpotifyFactory spotifyFactory)
         {
             this.spotifyClient = spotifyClient;
 
-            authenticateClient(spotifyGateway);
+            if (spotifyFactory.GetSpotifyConfiguration() != null)
+            {
+                authenticateClient(spotifyFactory.GetSpotifyConfiguration());
+            }
         }
 
-        private void authenticateClient(SpotifyGateway spotifyGateway)
+        private async void authenticateClient(SpotifyConfiguration spotifyConfiguration)
         {
-            this.spotifyClient.Authenticate(spotifyGateway.ToRequestAuthentication());
+            await this.spotifyClient.Authenticate(spotifyConfiguration.ToRequestAuthentication());
         }
 
         public Task<string> FetchAlbumInfo(string albumId)
