@@ -43,6 +43,7 @@ namespace Infrastructure.Services
 
         /*
          * https://code-maze.com/dotnet-factory-pattern-dependency-injection/
+         * https://blog.stephencleary.com/2013/01/async-oop-2-constructors.html
          */
     }
 }

@@ -22,9 +22,9 @@ namespace Domain.Core
             return this.spotifyService.FetchArtistInfo(artistId);
         }
 
-        public Task<string> FetchMusicInfo(string musicId)
+        public Task<string> FetchTrackInfo(string musicId)
         {
-            return this.spotifyService.FetchMusicInfo(musicId);
+            return this.spotifyService.FetchTrackInfo(musicId);
         }
     }
 }

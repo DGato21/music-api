@@ -3,5 +3,10 @@
     public class ApiErrorDTO
     {
         public string ErrorMessage { get; set; }
+
+        public ApiErrorDTO(string errorMessage) 
+        {
+            this.ErrorMessage = errorMessage;
+        }
     }
 }

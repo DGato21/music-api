@@ -7,6 +7,6 @@ namespace Data.Gateway.SpotifyAPI.Interfaces
         public Task Authenticate(RequestAuthentication requestAuthentication);
         public Task<ArtistInfoResponse> FetchArtistInfo(RequestArtistInfo requestArtistInfo);
         public Task<AlbumInfoResponse> FetchAlbumInfo(RequestAlbumInfo requestAlbumInfo);
-        public Task<MusicInfoResponse> FetchMusicInfo(RequestMusicInfo requestMusicInfo);
+        public Task<TrackInfoResponse> FetchTrackInfo(RequestTrackInfo requestMusicInfo);
     }
 }

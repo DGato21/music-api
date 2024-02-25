@@ -22,9 +22,9 @@ namespace Application.Core
             return this.music.FetchArtistInfo(artistId);
         }
 
-        public Task<string> FetchMusicInfo(string musicId)
+        public Task<string> FetchTrackInfo(string musicId)
         {
-            return this.music.FetchMusicInfo(musicId);
+            return this.music.FetchTrackInfo(musicId);
         }
     }
 }

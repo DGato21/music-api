@@ -1,8 +1,7 @@
-﻿using Application.Core;
-using Application.Core.Interfaces;
-using Data.Gateway.SpotifyAPI;
-using Microsoft.AspNetCore.Http;
+﻿using Application.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using music_api.Exceptions;
+using Newtonsoft.Json;
 
 namespace music_api.Controllers
 {
@@ -10,6 +9,8 @@ namespace music_api.Controllers
     [ApiController]
     public class MusicController : ControllerBase
     {
+        //RESPONSE TO -> DTOs Object instead of string
+
         private readonly IMusicApp musicApp;
 
         public MusicController(IMusicApp musicApp)
@@ -19,6 +20,8 @@ namespace music_api.Controllers
 
         [Route("/getAlbum/{id}")]
         [HttpGet]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiErrorDTO), StatusCodes.Status400BadRequest)]
         public async Task<string> getAlbum(string id)
         {
             try
@@ -28,7 +31,43 @@ namespace music_api.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return JsonConvert.SerializeObject(new ApiErrorDTO(ex.Message));
+            }
+        }
+
+        [Route("/getArtist/{id}")]
+        [HttpGet]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiErrorDTO), StatusCodes.Status400BadRequest)]
+        public async Task<string> getArtist(string id)
+        {
+            try
+            {
+                var response = await this.musicApp.FetchArtistInfo(id);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return JsonConvert.SerializeObject(new ApiErrorDTO(ex.Message));
+            }
+        }
+
+        [Route("/getTrack/{id}")]
+        [HttpGet]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiErrorDTO), StatusCodes.Status400BadRequest)]
+        public async Task<string> getTrack(string id)
+        {
+            try
+            {
+                return await this.musicApp.FetchTrackInfo(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return JsonConvert.SerializeObject(new ApiErrorDTO(ex.Message));
             }
         }
     }

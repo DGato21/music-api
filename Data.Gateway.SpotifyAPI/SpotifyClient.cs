@@ -13,6 +13,9 @@ namespace Data.Gateway.SpotifyAPI
     {
         //TODO: Logic To Do Another Authorization Request after ExpirationTime
 
+        private const string REQUEST_MEDIATYPE = "application/x-www-form-urlencoded";
+        private const string HEADER_ACCEPT_MEDIATYPE = "application/json";
+
         private readonly HttpClient httpClient;
 
         private string token;
@@ -31,11 +34,10 @@ namespace Data.Gateway.SpotifyAPI
             {
                 HttpContent content = null;
 
-                var stringContent = new StringContent(JsonConvert.SerializeObject(requestAuthentication.getAuthBody), Encoding.UTF8, "application/x-www-form-urlencoded");
-                string requestUrl = SpotifyCommand.AuthenticationUrl(requestAuthentication.baseUrl);
-                var response = await this.httpClient.PostAsync(requestUrl, stringContent).ConfigureAwait(false);
+                var stringContent = new StringContent(requestAuthentication.getAuthBody, Encoding.UTF8, REQUEST_MEDIATYPE);
+                var response = await this.httpClient.PostAsync(SpotifyCommand.AuthenticationUrl(requestAuthentication.baseUrl), stringContent).ConfigureAwait(false);
 
-                //TODO
+                //TODO IMPROVE
                 var responseStr = response.Content.ReadAsStringAsync().Result;
 
                 var authenticationResponse = JsonConvert.DeserializeObject<AuthenticationResponse>(responseStr);
@@ -51,37 +53,59 @@ namespace Data.Gateway.SpotifyAPI
 
         public async Task<AlbumInfoResponse> FetchAlbumInfo(RequestAlbumInfo requestAlbumInfo)
         {
-            var response = await this.httpClient.GetStringAsync(SpotifyCommand.AlbumInfo).ConfigureAwait(false);
+            try
+            {
+                var response = await this.httpClient.GetStringAsync(SpotifyCommand.AlbumInfo(requestAlbumInfo.baseUrl, requestAlbumInfo.albumId)).ConfigureAwait(false);
 
-            return new AlbumInfoResponse();
+                return JsonConvert.DeserializeObject<AlbumInfoResponse>(response);
+            }
+            catch (Exception ex) 
+            { 
+                throw ex; 
+            }
         }
 
         public async Task<ArtistInfoResponse> FetchArtistInfo(RequestArtistInfo requestArtistInfo)
         {
-            var response = await this.httpClient.GetStringAsync(SpotifyCommand.ArtistInfo).ConfigureAwait(false);
+            try
+            {
+                var response = await this.httpClient.GetStringAsync(SpotifyCommand.ArtistInfo(requestArtistInfo.baseUrl, requestArtistInfo.artistId)).ConfigureAwait(false);
 
-            return new ArtistInfoResponse();
+                return JsonConvert.DeserializeObject<ArtistInfoResponse>(response);
+            }
+            catch (Exception ex) 
+            { 
+                throw ex; 
+            }
         }
 
-        public async Task<MusicInfoResponse> FetchMusicInfo(RequestMusicInfo requestMusicInfo)
+        public async Task<TrackInfoResponse> FetchTrackInfo(RequestTrackInfo requestTrackInfo)
         {
-            var response = await this.httpClient.GetStringAsync(SpotifyCommand.MusicInfo).ConfigureAwait(false);
+            try
+            {
+                var response = await this.httpClient.GetStringAsync(SpotifyCommand.TrackInfo(requestTrackInfo.baseUrl, requestTrackInfo.musicId)).ConfigureAwait(false);
 
-            return new MusicInfoResponse();
+                return JsonConvert.DeserializeObject<TrackInfoResponse>(response);
+            }
+            catch (Exception ex) 
+            { 
+                throw ex; 
+            }
         }
 
-        public void SetToken(string token) => this.token = token;
-        public void SetTokenType(string tokenType) => this.tokenType = tokenType;
+        private void SetToken(string token) => this.token = token;
+        private void SetTokenType(string tokenType) => this.tokenType = tokenType;
 
         private void SetHttpClientToken(string tokenType, string token)
         {
+            SetTokenType(tokenType);
+            SetToken(token);
             this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(this.tokenType, token);
         }
 
         private void SetHttpClientDefaultHeaders()
         {
-            this.httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
-            this.httpClient.DefaultRequestHeaders.Add("User-Agent", "Other");
+            this.httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(HEADER_ACCEPT_MEDIATYPE));
         }
     }
 }
