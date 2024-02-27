@@ -10,6 +10,7 @@ using Repository.CommandQueries;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Infrastructure.Configuration.Factories;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Services
 {
@@ -33,8 +34,8 @@ namespace Infrastructure.Services
             serviceCollection.AddScoped<IShow, Show>();
 
             //Data.Gateway
-            serviceCollection.AddScoped<ISpotifyClient, SpotifyClient>();
-            serviceCollection.AddScoped<ISpotifyService, SpotifyService>();
+            serviceCollection.AddSingleton<ISpotifyClient, SpotifyClient>();
+            serviceCollection.AddSingleton<ISpotifyService, SpotifyService>();
 
             //Data.Repository Services
             serviceCollection.AddSingleton<ICommandText, CommandText>();

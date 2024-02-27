@@ -2,7 +2,7 @@
 
 namespace Data.Gateway.SpotifyAPI.DTO
 {
-    public class AlbumInfoResponse : BaseResponse
+    public class AlbumInfoResponse : SpotifyItem
     {
         public AlbumType album_type { get; set; }
         public int total_tracks { get; set; }

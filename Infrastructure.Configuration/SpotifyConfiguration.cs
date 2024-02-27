@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-
-namespace Infrastructure.Configuration
+﻿namespace Infrastructure.Configuration
 {
     public class SpotifyConfiguration
     {
@@ -9,5 +7,7 @@ namespace Infrastructure.Configuration
         public string clientSecret { get; set; }
         public string baseUrl { get; set; }
         public string authenticationUrl { get; set; }
+        public string scopes { get; set; }
+        public string redirectUrl { get; set; }
     }
 }

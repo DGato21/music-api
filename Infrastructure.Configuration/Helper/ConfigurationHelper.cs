@@ -12,7 +12,9 @@ namespace Infrastructure.Services.Helper
                 clientId = configuration.GetValue<string>($"{SpotifyConfiguration.SpotifyConfigurationBasePath}:clientId"),
                 clientSecret = configuration.GetValue<string>($"{SpotifyConfiguration.SpotifyConfigurationBasePath}:clientSecret"),
                 baseUrl = configuration.GetValue<string>($"{SpotifyConfiguration.SpotifyConfigurationBasePath}:baseUrl"),
-                authenticationUrl = configuration.GetValue<string>($"{SpotifyConfiguration.SpotifyConfigurationBasePath}:authenticationUrl")
+                authenticationUrl = configuration.GetValue<string>($"{SpotifyConfiguration.SpotifyConfigurationBasePath}:authenticationUrl"),
+                scopes = configuration.GetValue<string>($"{SpotifyConfiguration.SpotifyConfigurationBasePath}:scopes"),
+                redirectUrl = configuration.GetValue<string>($"{SpotifyConfiguration.SpotifyConfigurationBasePath}:redirectUrl")
             };
         }
     }

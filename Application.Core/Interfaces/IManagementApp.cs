@@ -2,5 +2,7 @@
 {
     public interface IManagementApp
     {
+        public Task<string> LoginSpotify();
+        public Task<string> AuthenticateSpotifyUserAccessToken();
     }
 }

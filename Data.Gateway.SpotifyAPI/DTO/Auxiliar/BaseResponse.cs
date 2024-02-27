@@ -9,5 +9,10 @@
         public string uri { get; set; }
         public ObjectType type { get; set; }
         public int popularity { get; set; }
+
+        //For Pagination Requests
+        public int offset { get; set; }
+        public string next { get; set; }
+        public string previous { get; set; }
     }
 }

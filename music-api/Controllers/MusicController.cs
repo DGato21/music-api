@@ -1,4 +1,5 @@
 ﻿using Application.Core.Interfaces;
+using Infrastructure.Exceptions.Spotify;
 using Microsoft.AspNetCore.Mvc;
 using music_api.Exceptions;
 using Newtonsoft.Json;
@@ -63,6 +64,28 @@ namespace music_api.Controllers
             try
             {
                 return await this.musicApp.FetchTrackInfo(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return JsonConvert.SerializeObject(new ApiErrorDTO(ex.Message));
+            }
+        }
+
+        [Route("/getTopItems")]
+        [HttpGet]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiErrorDTO), StatusCodes.Status400BadRequest)]
+        public async Task<string> getTopItems(string type)
+        {
+            try
+            {
+                return await this.musicApp.FetchTopItems(type);
+            }
+            catch (SpotifyMissingLoginException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return JsonConvert.SerializeObject(new ApiErrorDTO(ex.Message));
             }
             catch (Exception ex)
             {

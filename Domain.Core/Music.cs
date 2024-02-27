@@ -26,5 +26,11 @@ namespace Domain.Core
         {
             return this.spotifyService.FetchTrackInfo(musicId);
         }
+
+        public Task<string> FetchTopItems(string type)
+        {
+            return this.spotifyService.FetchTopItems(type);
+        }
+
     }
 }

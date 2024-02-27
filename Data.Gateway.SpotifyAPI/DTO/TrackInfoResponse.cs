@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Data.Gateway.SpotifyAPI.DTO
 {
-    public class TrackInfoResponse : BaseResponse
+    public class TrackInfoResponse : SpotifyItem
     {
         public AlbumInfoResponse album { get; set; }
         public IEnumerable<ArtistInfoResponse> artists { get; set; }

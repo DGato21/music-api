@@ -1,6 +1,6 @@
 ﻿namespace Data.Gateway.SpotifyAPI.DTO
 {
-    internal class AuthenticationResponse
+    public class AuthenticationClientResponse
     {
         public string access_token { get; set; }
         public string token_type { get; set; }

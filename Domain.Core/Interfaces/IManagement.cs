@@ -1,6 +1,8 @@
 ﻿namespace Domain.Core.Interfaces
 {
-    public class IManagement
+    public interface IManagement
     {
+        public Task<string> LoginSpotify();
+        public Task<string> AuthenticateSpotifyUserAccessToken();
     }
 }

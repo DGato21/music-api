@@ -33,7 +33,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "music-api", "music-api\musi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Gateway.SpotifyAPI", "Data.Gateway.SpotifyAPI\Data.Gateway.SpotifyAPI.csproj", "{5C12E62F-6173-47B7-A512-873C0BF25C08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Configuration", "Infrastructure.Configuration\Infrastructure.Configuration.csproj", "{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Configuration", "Infrastructure.Configuration\Infrastructure.Configuration.csproj", "{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Extensions", "Infrastructure.Extensions\Infrastructure.Extensions.csproj", "{3BF28A0D-6B8F-4ED4-BA1A-7DC18B100BC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.CrossCutting", "Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{DABF2FBA-35E0-4159-8537-B78320A897FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Exceptions", "Infrastructure.Exceptions\Infrastructure.Exceptions.csproj", "{F895A605-B391-49AB-939C-1A37AC0966E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +87,18 @@ Global
 		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF28A0D-6B8F-4ED4-BA1A-7DC18B100BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF28A0D-6B8F-4ED4-BA1A-7DC18B100BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF28A0D-6B8F-4ED4-BA1A-7DC18B100BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF28A0D-6B8F-4ED4-BA1A-7DC18B100BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DABF2FBA-35E0-4159-8537-B78320A897FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABF2FBA-35E0-4159-8537-B78320A897FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABF2FBA-35E0-4159-8537-B78320A897FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABF2FBA-35E0-4159-8537-B78320A897FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F895A605-B391-49AB-939C-1A37AC0966E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F895A605-B391-49AB-939C-1A37AC0966E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F895A605-B391-49AB-939C-1A37AC0966E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F895A605-B391-49AB-939C-1A37AC0966E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +119,9 @@ Global
 		{925EAA52-D3EA-4F2D-AAFE-DF5DBEA08A88} = {B51F0788-02A5-4479-BE36-C6EF2DFAA5AD}
 		{5C12E62F-6173-47B7-A512-873C0BF25C08} = {E8D63C11-8228-4118-8AC8-0CCE9E2ED093}
 		{43E6BA62-BD91-4EF3-B5B5-54A598D28E2E} = {56A3BDF8-73FE-47A5-985A-A629B1090E9D}
+		{3BF28A0D-6B8F-4ED4-BA1A-7DC18B100BC5} = {56A3BDF8-73FE-47A5-985A-A629B1090E9D}
+		{DABF2FBA-35E0-4159-8537-B78320A897FB} = {56A3BDF8-73FE-47A5-985A-A629B1090E9D}
+		{F895A605-B391-49AB-939C-1A37AC0966E8} = {56A3BDF8-73FE-47A5-985A-A629B1090E9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {36CC9528-C05B-4BF8-B905-276727679EEF}

@@ -2,7 +2,7 @@
 
 namespace Data.Gateway.SpotifyAPI.DTO
 {
-    public class ArtistInfoResponse : BaseResponse
+    public class ArtistInfoResponse : SpotifyItem
     {
         public Followers followers { get; set; }
         public IEnumerable<string> genres { get; set; }

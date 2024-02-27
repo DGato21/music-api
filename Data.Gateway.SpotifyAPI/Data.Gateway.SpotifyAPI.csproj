@@ -14,6 +14,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.Configuration\Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj" />
+    <ProjectReference Include="..\Infrastructure.Exceptions\Infrastructure.Exceptions.csproj" />
+    <ProjectReference Include="..\Infrastructure.Extensions\Infrastructure.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

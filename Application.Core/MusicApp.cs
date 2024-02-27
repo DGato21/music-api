@@ -1,4 +1,5 @@
 ﻿using Application.Core.Interfaces;
+using Domain.Core;
 using Domain.Core.Interfaces;
 
 namespace Application.Core
@@ -25,6 +26,11 @@ namespace Application.Core
         public Task<string> FetchTrackInfo(string musicId)
         {
             return this.music.FetchTrackInfo(musicId);
+        }
+
+        public Task<string> FetchTopItems(string type)
+        {
+            return this.music.FetchTopItems(type);
         }
     }
 }
