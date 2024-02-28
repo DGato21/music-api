@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 
 namespace Data.Gateway.SpotifyAPI
 {
+    //Library: https://github.com/Ringobot/SpotifyApi.NetCore
+
     public class SpotifyService : ISpotifyService
     {
         private readonly ISpotifyClient spotifyClient;
