@@ -51,6 +51,14 @@ namespace Data.Gateway.SpotifyAPI
             return JsonConvert.SerializeObject(response);
         }
 
+        public async Task<string> SearchInfo(string filter, IEnumerable<string> typeFilter)
+        {
+            if (!initializedClient) { authenticateClient(this.spotifyConfiguration); }
+            var response = await this.spotifyClient.SearchInfo(new DTO.RequestSearchInfo(this.spotifyConfiguration.baseUrl, filter, typeFilter));
+
+            return JsonConvert.SerializeObject(response);
+        }
+
 
         public async Task<string> FetchTopItems(string type)
         {

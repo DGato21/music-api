@@ -1,9 +1,7 @@
 ﻿using Data.Gateway.SpotifyAPI.Command;
 using Data.Gateway.SpotifyAPI.DTO;
 using Data.Gateway.SpotifyAPI.Interfaces;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -151,6 +149,24 @@ namespace Data.Gateway.SpotifyAPI
                 var response = await this.httpClient.GetStringAsync(SpotifyCommand.TopItemsInfo(requestTopItems.baseUrl, requestTopItems.type.ToString())).ConfigureAwait(false);
 
                 return JsonConvert.DeserializeObject<TopItemResponse>(response);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public async Task<SearchInfoResponse> SearchInfo(RequestSearchInfo requestSearchInfo)
+        {
+            try
+            {
+                var requestQuery = requestSearchInfo.getAuthQuery();
+
+                var response = await this.httpClient.GetStringAsync(
+                    SpotifyCommand.SearchInfo(requestSearchInfo.baseUrl, requestQuery)).ConfigureAwait(true);
+
+                return JsonConvert.DeserializeObject<SearchInfoResponse>(response);
             }
             catch (Exception ex)
             {

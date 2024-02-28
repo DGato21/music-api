@@ -11,5 +11,6 @@ namespace Data.Gateway.SpotifyAPI.Interfaces
         public Task<AlbumInfoResponse> FetchAlbumInfo(RequestAlbumInfo requestAlbumInfo);
         public Task<TrackInfoResponse> FetchTrackInfo(RequestTrackInfo requestMusicInfo);
         public Task<TopItemResponse> FetchTopItems(RequestTopItem requestTopItems);
+        public Task<SearchInfoResponse> SearchInfo(RequestSearchInfo requestSearchInfo);
     }
 }
