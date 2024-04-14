@@ -10,6 +10,6 @@ namespace Data.Gateway.SpotifyAPI.Interfaces
         public Task<string> FetchTopItems(string type);
         public Task<string> SearchInfo(string filter, IEnumerable<string> typeFilter);
         public Task<string> LoginUser();
-        public Task<string> AuthenticateUserAccessToken();
+        public Task<string> AuthenticateAccessToken(string code, string state);
     }
 }

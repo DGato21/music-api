@@ -1,6 +1,7 @@
 ﻿using Application.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using music_api.Exceptions;
 using Newtonsoft.Json;
 
@@ -52,15 +53,18 @@ namespace music_api.Controllers
             }
         }
 
-        [Route("/authUser")]
+        [Route("/authSpotify")]
         [HttpGet]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiErrorDTO), StatusCodes.Status400BadRequest)]
-        public async Task<string> authenticateSpotifyUserAccessToken()
+        public async Task<string> authenticationSpotify([FromQuery] string code, [FromQuery] string state, [FromQuery] string error)
         {
             try
             {
-                return await this.managementApp.AuthenticateSpotifyUserAccessToken();
+                if (string.IsNullOrEmpty(error))
+                    return await this.managementApp.AuthenticateSpotifyAccessToken(code, state);
+                else //TODO: Method to cancel the state of the authentication: reset state, etc
+                    return "INVALID";
             }
             catch (Exception ex)
             {

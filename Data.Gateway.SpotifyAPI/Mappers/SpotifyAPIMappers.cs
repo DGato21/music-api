@@ -15,9 +15,9 @@ namespace Data.Gateway.SpotifyAPI.Mappers
             return new RequestAuthenticationUser(spotifyGateway.authenticationUrl, spotifyGateway.clientId, spotifyGateway.clientSecret, spotifyGateway.scopes, spotifyGateway.redirectUrl);
         }
 
-        public static RequestAuthenticationUserAccessToken ToRequestAuthenticationUserAccessToken(this SpotifyConfiguration spotifyGateway)
+        public static RequestAuthenticationAuthorizationCode ToRequestAuthenticationAccessToken(this SpotifyConfiguration spotifyGateway, string code)
         {
-            return new RequestAuthenticationUserAccessToken(spotifyGateway.authenticationUrl, spotifyGateway.clientId, spotifyGateway.clientSecret, spotifyGateway.scopes, spotifyGateway.redirectUrl);
+            return new RequestAuthenticationAuthorizationCode(spotifyGateway.authenticationUrl, spotifyGateway.clientId, spotifyGateway.clientSecret, code, spotifyGateway.redirectUrl);
         }
     }
 }

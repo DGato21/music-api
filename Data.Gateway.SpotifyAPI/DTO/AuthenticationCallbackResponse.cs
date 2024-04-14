@@ -1,6 +1,9 @@
 ﻿namespace Data.Gateway.SpotifyAPI.DTO
 {
-    public class AuthenticationUserResponse
+    /// <summary>
+    /// The information that we are going to receive in Callback Request: .../authSpotifyCallback
+    /// </summary>
+    public class AuthenticationCallbackResponse
     {
         /// <summary>
         /// Authorization code that can be exchanged for an access token

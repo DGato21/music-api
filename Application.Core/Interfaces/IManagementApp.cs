@@ -3,6 +3,6 @@
     public interface IManagementApp
     {
         public Task<string> LoginSpotify();
-        public Task<string> AuthenticateSpotifyUserAccessToken();
+        public Task<string> AuthenticateSpotifyAccessToken(string code, string state);
     }
 }

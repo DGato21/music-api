@@ -1,5 +1,9 @@
 ﻿namespace Data.Gateway.SpotifyAPI.DTO
 {
+    /// <summary>
+    /// Request Authentication using Client Credentials
+    /// - No access to User Data
+    /// </summary>
     public class RequestAuthenticationClient : RequestBase
     {
         public string grant_type { get; set; }

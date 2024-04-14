@@ -27,6 +27,11 @@ namespace Data.Gateway.SpotifyAPI
             this.token = null;
         }
 
+        /// <summary>
+        /// Authenticate Spotify using Client Credentials
+        /// </summary>
+        /// <param name="requestAuthentication"></param>
+        /// <returns></returns>
         public async Task<AuthenticationClientResponse> AuthenticateClient(RequestAuthenticationClient requestAuthentication)
         {
             try
@@ -37,8 +42,7 @@ namespace Data.Gateway.SpotifyAPI
                 var stringContent = new StringContent(requestAuthentication.getAuthBody, Encoding.UTF8, REQUEST_MEDIATYPE);
                 var response = await this.httpClient.PostAsync(SpotifyCommand.AuthenticationClientUrl(requestAuthentication.baseUrl), stringContent).ConfigureAwait(true);
 
-                //TODO IMPROVE
-                var responseStr = response.Content.ReadAsStringAsync().Result;
+                var responseStr = await response.Content.ReadAsStringAsync();
 
                 var authenticationResponse = JsonConvert.DeserializeObject<AuthenticationClientResponse>(responseStr);
 
@@ -53,6 +57,11 @@ namespace Data.Gateway.SpotifyAPI
             }
         }
 
+        /// <summary>
+        /// Authentication Spotify using Authorization Code Flow - Step 1
+        /// </summary>
+        /// <param name="requestAuthentication"></param>
+        /// <returns></returns>
         public async Task<string> AuthenticateUser(RequestAuthenticationUser requestAuthentication)
         {
             try
@@ -62,8 +71,16 @@ namespace Data.Gateway.SpotifyAPI
                 var response = await this.httpClient.GetStringAsync(
                     SpotifyCommand.AuthenticationUserUrl(requestAuthentication.baseUrl, requestQuery)).ConfigureAwait(true);
 
-                System.IO.File.WriteAllText(@$"{AppContext.BaseDirectory}\redirect.html", response);
-                System.Diagnostics.Process.Start(response);
+                string path = $"{AppContext.BaseDirectory}\\redirect.html";
+
+                //System.IO.File.WriteAllText(path, response);
+
+                //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {path}") { CreateNoWindow = true });
+
+                //https://stackoverflow.com/questions/76831817/getting-data-from-a-backend-server-side-file-and-displaying-it-on-a-client-side
+                //https://www.quora.com/How-do-you-open-an-HTML-file-on-a-server
+                //https://www.youtube.com/watch?v=1vR3m0HupGI
+                //https://www.youtube.com/watch?v=olY_2MW4Eik _> THIS ONE USES PYTHON AND ONLY PYTHON: but iit have HtmlCode in Python
 
                 return response;
             }
@@ -73,7 +90,12 @@ namespace Data.Gateway.SpotifyAPI
             }
         }
 
-        public async Task<AuthenticationUserAccessTokenResponse> AuthenticateUserAccessToken(RequestAuthenticationUserAccessToken requestAuthentication)
+        /// <summary>
+        /// Authentication Spotify using Authorization Code Flow - Step 2
+        /// </summary>
+        /// <param name="requestAuthentication"></param>
+        /// <returns></returns>
+        public async Task<AuthenticationAuthorizationCodeResponse> AuthenticateAccessToken(RequestAuthenticationAuthorizationCode requestAuthentication)
         {
             try
             {
@@ -85,7 +107,7 @@ namespace Data.Gateway.SpotifyAPI
                 //TODO IMPROVE
                 var responseStr = response.Content.ReadAsStringAsync().Result;
 
-                var authenticationResponse = JsonConvert.DeserializeObject<AuthenticationUserAccessTokenResponse>(responseStr);
+                var authenticationResponse = JsonConvert.DeserializeObject<AuthenticationAuthorizationCodeResponse>(responseStr);
 
                 //Receive the Token and Set
                 _setHttpClientToken(authenticationResponse.token_type, authenticationResponse.access_token, authenticationResponse.refresh_token);
@@ -155,7 +177,6 @@ namespace Data.Gateway.SpotifyAPI
                 throw ex;
             }
         }
-
 
         public async Task<SearchInfoResponse> SearchInfo(RequestSearchInfo requestSearchInfo)
         {

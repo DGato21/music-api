@@ -9,6 +9,7 @@ namespace Data.Gateway.SpotifyAPI.DTO
         public string redirect_uri { get; set; }
         public string state { get; set; }
         public string scope { get; set; }
+        public bool show_dialog { get; set; } = false;
 
         public RequestAuthenticationUser(string baseUrl, string client_id, string client_secret, string scope, string redirectUrl) : base(baseUrl, client_id, client_secret)
         {

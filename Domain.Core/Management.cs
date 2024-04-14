@@ -17,9 +17,9 @@ namespace Domain.Core
             return await this.spotifyService.LoginUser();
         }
 
-        public async Task<string> AuthenticateSpotifyUserAccessToken()
+        public async Task<string> AuthenticateSpotifyAccessToken(string code, string state)
         {
-            return await this.spotifyService.AuthenticateUserAccessToken();
+            return await this.spotifyService.AuthenticateAccessToken(code, state);
         }
     }
 }

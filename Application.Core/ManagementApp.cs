@@ -17,9 +17,9 @@ namespace Application.Core
             return this.management.LoginSpotify();
         }
 
-        public Task<string> AuthenticateSpotifyUserAccessToken()
+        public Task<string> AuthenticateSpotifyAccessToken(string code, string state)
         {
-            return this.management.AuthenticateSpotifyUserAccessToken();
+            return this.management.AuthenticateSpotifyAccessToken(code, state);
         }
     }
 }

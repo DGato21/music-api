@@ -16,6 +16,8 @@ namespace Data.Gateway.SpotifyAPI
         private bool initializedClient;
         private bool initializedUser;
 
+        private string state = null; //CHECK IF NEEDED STATE PER USER/TRANSACTION?
+
         public SpotifyService(ISpotifyClient spotifyClient, SpotifyFactory spotifyFactory)
         {
             this.spotifyClient = spotifyClient;
@@ -68,10 +70,18 @@ namespace Data.Gateway.SpotifyAPI
             return JsonConvert.SerializeObject(response);
         }
 
-        public async Task<string> AuthenticateUserAccessToken()
+        /// <summary>
+        /// Finish the Spotify User Login using Authorization Code Flow - Step 2
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public async Task<string> AuthenticateAccessToken(string code, string state)
         {
-            if (!initializedUser) { authenticateClient(this.spotifyConfiguration); }
-            var response = await this.spotifyClient.AuthenticateUserAccessToken(this.spotifyConfiguration.ToRequestAuthenticationUserAccessToken());
+            //TODO: Verify the State that was sent
+            if (string.IsNullOrEmpty(state))
+                throw new Exception("Invalid State...");
+
+            var response = await this.spotifyClient.AuthenticateAccessToken(this.spotifyConfiguration.ToRequestAuthenticationAccessToken(code));
             this.initializedClient = true;
 
             return JsonConvert.SerializeObject(response);
@@ -80,6 +90,10 @@ namespace Data.Gateway.SpotifyAPI
         //DOUBT: Pass the Authentication Responsability to IManagement: this service will depend on IManagement, in a way that
         //each time authentication was required it should "contact" this service
 
+        /// <summary>
+        /// Login a Spotify User using Authorization Code Flow - Step 1
+        /// </summary>
+        /// <returns></returns>
         public async Task<string> LoginUser()
         {
             var response = await this.spotifyClient.AuthenticateUser(this.spotifyConfiguration.ToRequestAuthenticationUser());
@@ -88,10 +102,19 @@ namespace Data.Gateway.SpotifyAPI
             return response;
         }
 
+        #region ----- Private Methods
+
+        /// <summary>
+        /// Authentication using Client Credentials
+        /// </summary>
+        /// <param name="spotifyConfiguration"></param>
+        /// <returns></returns>
         private async Task authenticateClient(SpotifyConfiguration spotifyConfiguration)
         {
             await this.spotifyClient.AuthenticateClient(spotifyConfiguration.ToRequestAuthenticationClient());
             this.initializedClient = true;
         }
+
+        #endregion
     }
 }
